@@ -89,7 +89,7 @@ public final class HadoopNative
             throw new RuntimeException("library not found: " + libraryPath);
         }
 
-        File file = File.createTempFile(name, null);
+        File file = Files.createTempFile(name, null).toFile();
         file.deleteOnExit();
         try (InputStream in = url.openStream()) {
             Files.copy(in, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
